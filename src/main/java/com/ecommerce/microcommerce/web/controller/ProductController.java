@@ -2,6 +2,7 @@ package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@Api(description = "API pour es opérations CRUD sur les produits.")
+@Api(description = "API pour les opérations CRUD sur les produits.")
 
 @RestController
 public class ProductController {
@@ -60,8 +61,10 @@ public class ProductController {
 
         if (produit == null)
             throw new ProduitIntrouvableException("Le produit avec l'id " + id + " est INTROUVABLE. Écran Bleu si je pouvais.");
-
+        if (produit.getPrix() == 0)
+            throw new ProduitGratuitException("Le produit n'est pas gratuit !!");
         return produit;
+
     }
 
 
