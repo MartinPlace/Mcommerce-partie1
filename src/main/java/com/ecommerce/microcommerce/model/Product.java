@@ -16,7 +16,7 @@ public class Product {
     @GeneratedValue
     private int id;
 
-    @Length(min=3, max=20, message = "Nom trop long ou trop court. Et oui messages sont plus stylés que ceux de Spring")
+    @Length(min=3, max=20, message = "Le nom doit être compris entre 3 et 20 caractères max.")
     private String nom;
 
     @Min(value = 1)
