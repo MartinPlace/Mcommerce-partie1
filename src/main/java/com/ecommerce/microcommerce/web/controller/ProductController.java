@@ -104,12 +104,12 @@ public class ProductController {
         return productDao.chercherUnProduitCher(400);
     }
 
-    /*
-    @GetMapping(value = "/ProduitsOrderBy")
+
+    @GetMapping(value = "/ListAlphaProds")
     public List<Product> trierProduitsParOrdreAlphabetique() {
         return productDao.findByOrderByNomAsc();
     }
-*/
+
     @GetMapping(value = "/AdminProduits")
     public Map<Product, Integer> calculerMargeProduit() {
         Map<Product, Integer> listeProduits = new HashMap<Product, Integer>();
